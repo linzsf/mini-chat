@@ -1,0 +1,3 @@
+mini-chat:
+  server:
+    port: 9091
