@@ -1,6 +1,7 @@
 package org.lzsf.mc.client.netty;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -10,6 +11,8 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 import org.lzsf.mc.client.netty.handler.ClientHandler;
+import org.lzsf.protocol.request.LoginRequest;
+import org.lzsf.protocol.request.Request;
 
 @Slf4j
 public class NettyClient {
@@ -33,11 +36,12 @@ public class NettyClient {
                     .option(ChannelOption.SO_KEEPALIVE, true)
                     .remoteAddress(REMOTE_HOST, REMOTE_PORT);
             ChannelFuture future = bootstrap.connect().sync();
-//            AuthRequest authMessage = new AuthRequest();
-//            authMessage.setCommand(Request.AUTH);
-//            authMessage.setToken("fwergaafsewarawfa");
-//            ByteBuf byteBuf = EncodeManager.encode(authMessage);
-//            future.channel().writeAndFlush(byteBuf);
+            LoginRequest loginRequest = new LoginRequest();
+            loginRequest.setCommand(Request.LOGIN);
+            loginRequest.setUserName("zhangsan");
+            loginRequest.setPassword("123456");
+            ByteBuf byteBuf = EncodeManager.encode(loginRequest);
+            future.channel().writeAndFlush(byteBuf);
             future.channel().closeFuture().sync();
         } catch (Exception e) {
             log.error(e.getMessage());
