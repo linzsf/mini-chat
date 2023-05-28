@@ -1,6 +1,8 @@
 package org.lzsf.exception;
 
 public class NotFoundMessageServiceException extends RuntimeException{
+    private static final long serialVersionUID = -7823600729662790648L;
+
     public NotFoundMessageServiceException() {
         super();
     }

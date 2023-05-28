@@ -1,4 +1,4 @@
-package org.lzsf.mc.client.netty;
+package org.lzsf.mc.client.netty.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

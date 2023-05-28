@@ -11,4 +11,8 @@ public class ClientApplication {
         NettyClient nettyClient = new NettyClient();
         nettyClient.start();
     }
+
+    private void login(String userName, String passWord) {
+
+    }
 }
