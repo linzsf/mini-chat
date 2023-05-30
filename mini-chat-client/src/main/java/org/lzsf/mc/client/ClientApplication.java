@@ -1,6 +1,8 @@
 package org.lzsf.mc.client;
 
 import org.lzsf.mc.client.netty.NettyClient;
+import org.lzsf.protocol.request.LoginRequest;
+import org.lzsf.protocol.request.Request;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,9 +12,5 @@ public class ClientApplication {
 //        SpringApplication.run(ClientApplication.class);
         NettyClient nettyClient = new NettyClient();
         nettyClient.start();
-    }
-
-    private void login(String userName, String passWord) {
-
     }
 }
