@@ -8,6 +8,9 @@ import org.lzsf.protocol.Packet;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
-public class AuthResponse extends Response{
-    private static final long serialVersionUID = -900049200963193951L;
+public class LoginResponse extends Response{
+
+    private static final long serialVersionUID = -1711952349816083578L;
+
+    private String jwtToken;
 }

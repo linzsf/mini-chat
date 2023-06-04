@@ -1,4 +1,4 @@
-package org.lzsf.mc.client.netty.handler;
+package org.lzsf.mc.server.netty.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

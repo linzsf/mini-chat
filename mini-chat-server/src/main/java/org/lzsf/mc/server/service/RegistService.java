@@ -1,4 +1,12 @@
 package org.lzsf.mc.server.service;
 
-public class RegistService {
+import io.netty.channel.ChannelHandlerContext;
+import org.lzsf.protocol.request.Request;
+import org.lzsf.protocol.response.Response;
+
+public class RegistService implements ServerService{
+    @Override
+    public Response excute(ChannelHandlerContext ctx, Request request) {
+        return null;
+    }
 }

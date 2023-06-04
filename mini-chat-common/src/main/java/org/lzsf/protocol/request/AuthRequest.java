@@ -7,8 +7,8 @@ import org.lzsf.protocol.Packet;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@ToString
-public abstract class AuthRequest extends Packet {
+@ToString(callSuper = true)
+public abstract class AuthRequest extends Request{
     private static final long serialVersionUID = -2160317000376692123L;
 
     /**

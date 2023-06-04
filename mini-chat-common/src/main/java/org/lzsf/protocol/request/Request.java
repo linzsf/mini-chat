@@ -1,10 +1,13 @@
 package org.lzsf.protocol.request;
 
-public interface Request {
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.lzsf.protocol.Packet;
 
-    byte REGIST = 1;
-
-    byte LOGIN = 2;
-
-    byte CHAT = 3;
+@EqualsAndHashCode(callSuper = true)
+@Data
+@ToString(callSuper = true)
+public abstract class Request extends Packet {
+    private static final long serialVersionUID = -533540948124504576L;
 }
