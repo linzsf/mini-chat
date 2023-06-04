@@ -14,7 +14,7 @@ public class RequestDispatchHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         Request request = (Request) msg;
         ServerService service = ServerServiceSelector.select(request.command);
-        Response response = service.excute(ctx, request);
+        Response response = service.execute(ctx, request);
         ctx.channel().writeAndFlush(response);
     }
 }

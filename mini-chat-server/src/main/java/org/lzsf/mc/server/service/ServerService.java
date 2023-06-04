@@ -5,5 +5,5 @@ import org.lzsf.protocol.request.Request;
 import org.lzsf.protocol.response.Response;
 
 public interface ServerService {
-    Response excute(ChannelHandlerContext ctx, Request request);
+    Response execute(ChannelHandlerContext ctx, Request request);
 }

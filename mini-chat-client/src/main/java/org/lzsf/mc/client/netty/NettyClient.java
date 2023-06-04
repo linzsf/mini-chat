@@ -40,4 +40,13 @@ public class NettyClient {
     public void send(Packet packet) {
         channel.writeAndFlush(packet);
     }
+
+    public void close() {
+        if (workerGroup != null && !workerGroup.isShutdown() && !workerGroup.isTerminated()) {
+            log.info("start disconnecting from remote server...");
+            workerGroup.shutdownGracefully();
+            log.info("disconnected from remote server");
+        }
+    }
 }
+

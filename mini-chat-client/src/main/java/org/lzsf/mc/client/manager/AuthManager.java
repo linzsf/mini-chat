@@ -1,4 +1,4 @@
-package org.lzsf.mc.client.service;
+package org.lzsf.mc.client.manager;
 
 public class AuthManager {
 

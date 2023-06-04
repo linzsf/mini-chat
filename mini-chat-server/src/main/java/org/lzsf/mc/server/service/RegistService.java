@@ -6,7 +6,7 @@ import org.lzsf.protocol.response.Response;
 
 public class RegistService implements ServerService{
     @Override
-    public Response excute(ChannelHandlerContext ctx, Request request) {
+    public Response execute(ChannelHandlerContext ctx, Request request) {
         return null;
     }
 }

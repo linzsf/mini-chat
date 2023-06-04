@@ -11,7 +11,7 @@ public class ServerServiceSelector {
     static {
         serviceMap.put(Command.REGIST, new RegistService());
         serviceMap.put(Command.LOGIN, new LoginService());
-        serviceMap.put(Command.CHAT, new ChatMessageService());
+        serviceMap.put(Command.CHAT, new ChatService());
     }
 
     public static ServerService select(Byte command) {

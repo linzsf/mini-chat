@@ -1,7 +1,9 @@
 package org.lzsf.mc.server.service;
 
 import io.netty.channel.ChannelHandlerContext;
-import org.lzsf.mc.server.util.JwtUtil;
+import org.apache.commons.lang3.StringUtils;
+import org.lzsf.mc.server.manager.AuthManager;
+import org.lzsf.mc.server.manager.UserChannelManager;
 import org.lzsf.protocol.Command;
 import org.lzsf.protocol.request.LoginRequest;
 import org.lzsf.protocol.request.Request;
@@ -9,19 +11,7 @@ import org.lzsf.protocol.response.LoginResponse;
 import org.lzsf.protocol.response.Response;
 import org.lzsf.protocol.response.ResponseCode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class LoginService implements ServerService{
-
-    private static Map<String, String> userInfoTestMap = new HashMap<>();
-
-    private static Map<String, Long> userNameIdMap = new HashMap<>();
-
-    static {
-        userInfoTestMap.put("zhangsan", "123456");
-        userNameIdMap.put("zhangsan", 24532122451234L);
-    }
 
 //    public static void login(ChannelHandlerContext ctx, LoginRequest request) {
 //        if (!userInfoTestMap.containsKey(request.getUserName())) {
@@ -35,15 +25,20 @@ public class LoginService implements ServerService{
 //    }
 
     @Override
-    public Response excute(ChannelHandlerContext ctx, Request request) {
+    public Response execute(ChannelHandlerContext ctx, Request request) {
         LoginRequest loginRequest = (LoginRequest) request;
         LoginResponse loginResponse = new LoginResponse();
-        if (!userInfoTestMap.containsKey(loginRequest.getUserName())) {
+        Long userId = AuthManager.getUserId(loginRequest.getUserName(), loginRequest.getPassword());
+        if (userId == null) {
             loginResponse.setResult(ResponseCode.LOGIN_FAIL.getCode());
             return loginResponse;
         }
-        String token = JwtUtil.genJwtToken(loginRequest.getUserName());
-
+        String token = AuthManager.genUserToken(userId);
+        if (StringUtils.isEmpty(token)) {
+            loginResponse.setResult(ResponseCode.LOGIN_FAIL.getCode());
+            return loginResponse;
+        }
+        UserChannelManager.userOnline(userId, ctx.channel());
         loginResponse.setJwtToken(token);
         loginResponse.setCommand(Command.LOGIN);
         return loginResponse;

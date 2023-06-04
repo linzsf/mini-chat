@@ -1,6 +1,7 @@
 package org.lzsf.mc.client.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.lzsf.mc.client.manager.AuthManager;
 import org.lzsf.protocol.response.LoginResponse;
 import org.lzsf.protocol.response.Response;
 
