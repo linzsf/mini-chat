@@ -10,11 +10,20 @@ import org.lzsf.protocol.request.ChatMessageRequest;
 import org.lzsf.protocol.request.Request;
 import org.lzsf.protocol.response.ChatMessageResponse;
 import org.lzsf.protocol.response.Response;
+import org.lzsf.protocol.response.ResponseCode;
 
 public class ChatService implements ServerService{
     @Override
     public Response execute(ChannelHandlerContext ctx, Request request) throws InterruptedException {
         ChatMessageRequest chatMessageRequest = (ChatMessageRequest) request;
+        // 校验权限
+        if (!AuthManager.validateUser(chatMessageRequest.getToken())) {
+            ChatMessageResponse response =  new ChatMessageResponse();
+            response.setRequestId(request.getRequestId());
+            response.setCommand(Command.MESSAGE);
+            response.setResult(ResponseCode.AUTH_FAIL.getCode());
+            return response;
+        }
         // 向接收方推送消息
         Long toUserId = AuthManager.getUserIdByUserName(((ChatMessageRequest) request).getToUserName());
         Channel toUserChannel = UserChannelManager.getChannelByUserId(toUserId);
