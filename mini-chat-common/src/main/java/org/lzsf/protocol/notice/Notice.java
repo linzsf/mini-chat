@@ -1,4 +1,4 @@
-package org.lzsf.protocol.request;
+package org.lzsf.protocol.notice;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,8 +8,6 @@ import org.lzsf.protocol.Packet;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
-public abstract class Request extends Packet {
-    private static final long serialVersionUID = -533540948124504576L;
-
-    private String requestId;
+public abstract class Notice extends Packet {
+    private static final long serialVersionUID = -1119444243434579510L;
 }

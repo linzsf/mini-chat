@@ -28,6 +28,10 @@ public class AuthManager {
         return userNameIdMap.get(userName);
     }
 
+    public static Long getUserIdByUserName(String userName) {
+        return userNameIdMap.get(userName);
+    }
+
     public static String genUserToken(Long userId) {
 //        if (!Objects.equals(userInfoTestMap.get(userName), password)) {
 //            return null;

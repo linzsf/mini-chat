@@ -9,7 +9,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "MIN-CHAT-SERVER-SECRET-LZSF-19170319";
+    private static final String SECRET_KEY = "MIN-MESSAGE-SERVER-SECRET-LZSF-19170319";
 
     private static final long EXPIRATION_TIME = 864_000_000;
 

@@ -21,6 +21,6 @@ public class UserChannelManager {
 
     public static void userOffline(Channel channel) {
         Long userId = (Long) channel.attr(AttributeKey.valueOf("userId")).get();
-        userChannelMap.remove(userId);
+         userChannelMap.remove(userId);
     }
 }

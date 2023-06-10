@@ -13,6 +13,8 @@ public abstract class Response extends Packet {
 
     private Integer result = ResponseCode.SUCCESS.getCode();
 
+    private String requestId;
+
     public boolean isSuccess() {
         return ResponseCode.SUCCESS.getCode().equals(this.result);
     }

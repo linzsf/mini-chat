@@ -4,7 +4,7 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import org.lzsf.mc.client.netty.handler.MessageDecoder;
 import org.lzsf.mc.client.netty.handler.MessageEncoder;
-import org.lzsf.mc.client.netty.handler.ResponseDispatcherHandler;
+import org.lzsf.mc.client.netty.handler.MessageDispatcherHandler;
 
 public class ClientNettyInitializer extends ChannelInitializer<SocketChannel> {
     @Override
@@ -13,6 +13,6 @@ public class ClientNettyInitializer extends ChannelInitializer<SocketChannel> {
         ch.pipeline().addLast(new MessageEncoder());
         // 入站事件
         ch.pipeline().addLast(new MessageDecoder());
-        ch.pipeline().addLast(new ResponseDispatcherHandler());
+        ch.pipeline().addLast(new MessageDispatcherHandler());
     }
 }

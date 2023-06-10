@@ -6,5 +6,5 @@ public interface Command {
 
     byte LOGIN = 2;
 
-    byte CHAT = 3;
+    byte MESSAGE = 3;
 }

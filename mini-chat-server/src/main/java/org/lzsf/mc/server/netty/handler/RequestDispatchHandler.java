@@ -13,7 +13,7 @@ public class RequestDispatchHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         Request request = (Request) msg;
-        ServerService service = ServerServiceSelector.select(request.command);
+        ServerService service = ServerServiceSelector.select(request.getCommand());
         Response response = service.execute(ctx, request);
         ctx.channel().writeAndFlush(response);
     }

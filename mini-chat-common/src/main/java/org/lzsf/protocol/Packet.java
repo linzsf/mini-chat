@@ -13,5 +13,5 @@ public abstract class Packet implements Serializable {
     /**
      * 消息类型
      */
-    public byte command;
+    private byte command;
 }

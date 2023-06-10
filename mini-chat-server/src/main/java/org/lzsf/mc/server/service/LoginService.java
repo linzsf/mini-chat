@@ -41,6 +41,7 @@ public class LoginService implements ServerService{
         UserChannelManager.userOnline(userId, ctx.channel());
         loginResponse.setJwtToken(token);
         loginResponse.setCommand(Command.LOGIN);
+        loginResponse.setRequestId(request.getRequestId());
         return loginResponse;
     }
 }

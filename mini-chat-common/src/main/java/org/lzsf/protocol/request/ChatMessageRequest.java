@@ -7,12 +7,12 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
-public class ChatRequest extends AuthRequest{
+public class ChatMessageRequest extends AuthRequest{
     private static final long serialVersionUID = 4546283134164238032L;
 
-    private Long fromUserId;
+    private String fromUserName;
 
-    private Long toUserId;
+    private String toUserName;
 
     private String content;
 }

@@ -5,9 +5,12 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
+import org.lzsf.mc.client.cache.RequestCacheManager;
 import org.lzsf.protocol.Packet;
+import org.lzsf.protocol.request.Request;
 
 
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 @Slf4j
@@ -37,8 +40,11 @@ public class NettyClient {
         }
     }
 
-    public void send(Packet packet) {
-        channel.writeAndFlush(packet);
+    public void send(Request request) {
+        UUID uuid = UUID.randomUUID();
+        request.setRequestId(uuid.toString());
+        channel.writeAndFlush(request);
+        RequestCacheManager.addRequest(request);
     }
 
     public void close() {

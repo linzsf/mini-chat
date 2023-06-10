@@ -7,4 +7,8 @@ public class AuthManager {
     public static void setJwtToken(String jwtToken) {
         AuthManager.jwtToken = jwtToken;
     }
+
+    public static String getJwtToken() {
+        return jwtToken;
+    }
 }
